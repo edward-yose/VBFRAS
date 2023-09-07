@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ARCHIVE/MaskedFaceRecognition_Roberto/Code/.idea/Code.iml" filepath="$PROJECT_DIR$/../ARCHIVE/MaskedFaceRecognition_Roberto/Code/.idea/Code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MFRAS/MFRAS/.idea/MFRAS.iml" filepath="$PROJECT_DIR$/../MFRAS/MFRAS/.idea/MFRAS.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/VBFRAS.iml" filepath="$PROJECT_DIR$/.idea/VBFRAS.iml" />
     </modules>
   </component>

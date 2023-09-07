@@ -1,0 +1,1 @@
+Well this folder contains local repo on attendance database, if it is unused hence using DBMS to store data attendance
