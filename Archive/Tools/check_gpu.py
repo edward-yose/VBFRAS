@@ -7,6 +7,8 @@ def run():
 
     if torch.cuda.is_available():
         print("CUDA Available")
+    else:
+        print("CUDA NOT Available")
 
 
 if __name__ == '__main__':
