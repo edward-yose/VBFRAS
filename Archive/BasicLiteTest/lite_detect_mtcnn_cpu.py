@@ -3,40 +3,46 @@ from mtcnn import MTCNN
 
 detector = MTCNN()
 
-##### Real Data Usage
+# # # Real Data Usage
 # VIDEO_FOOTAGE = '../../DATASET/private_dataset_01_mod.mp4'
 # ATTENDEE_FACE = '../../DATASET/Attendee'
 # OUTPUT_FACE = '../DATASET/capturedFace'
 
-##### Test Data Usage
+# # # Test Data Usage
 VIDEO_FOOTAGE = '../DATASET/dummy/youtube_content/02.mp4'
 ATTENDEE_FACE = '../DATASET/dummy/image2'
 OUTPUT_FACE = '../DATASET/capturedFace'
 
-# Open a video capture object
-video_capture = cv2.VideoCapture(VIDEO_FOOTAGE)  # 0 for the default camera, or provide the path to a video file
 
-while True:
-    # Read a frame from the video stream
-    ret, frame = video_capture.read()
-    if not ret:
-        break
+def main():
+    # Open a video capture object
+    video_capture = cv2.VideoCapture(VIDEO_FOOTAGE)  # 0 for the default camera, or provide the path to a video file
 
-    # Detect faces in the frame
-    faces = detector.detect_faces(frame)
+    while True:
+        # Read a frame from the video stream
+        ret, frame = video_capture.read()
+        if not ret:
+            break
 
-    # Draw bounding boxes around the detected faces
-    for face in faces:
-        x, y, width, height = face['box']
-        cv2.rectangle(frame, (x, y), (x + width, y + height), (0, 255, 0), 2)
+        # Detect faces in the frame
+        faces = detector.detect_faces(frame)
 
-    # Display the frame with bounding boxes
-    cv2.imshow('Video', frame)
+        # Draw bounding boxes around the detected faces
+        for face in faces:
+            x, y, width, height = face['box']
+            cv2.rectangle(frame, (x, y), (x + width, y + height), (0, 255, 0), 2)
 
-    # Exit the loop when the 'q' key is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        # Display the frame with bounding boxes
+        cv2.imshow('Video', frame)
 
-# Release the video capture object and close the OpenCV window
-video_capture.release()
-cv2.destroyAllWindows()
+        # Exit the loop when the 'q' key is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    video_capture.release()
+
+
+if __name__ == '__main__':
+    main()
+    # Release the video capture object and close the OpenCV window
+    cv2.destroyAllWindows()
