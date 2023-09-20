@@ -108,8 +108,8 @@ def create_comb(gen_model, disc_model, vgg, lr_ip, hr_ip):
 def main():
     # Load first n number of images (to train on a subset of all images)
     n = 40  # pool up to n-th images to train test data
-    lr_dir = "../../DATASET/LFW_unlabelled/lr_images"
-    hr_dir = "../../DATASET/LFW_unlabelled/hr_images"
+    lr_dir = f"../../../DATASET/img_align_celeba/lr_images"
+    hr_dir = f"../../../DATASET/img_align_celeba/hr_images"
 
     lr_list = os.listdir(lr_dir)[:n]
 
@@ -170,7 +170,7 @@ def main():
     gan_model.summary()
 
     # Create a list of images for LR and HR in batches from which a batch of images
-    batch_size = 1  # Recommended 1 alternative 8 images for faster computing in trade of low acc
+    batch_size = 1  # Recommended 1 alternative 4 images for faster computing in trade of low acc
     train_lr_batches = []
     train_hr_batches = []
     for it in range(int(hr_train.shape[0] / batch_size)):
@@ -179,7 +179,7 @@ def main():
         train_hr_batches.append(hr_train[start_idx:end_idx])
         train_lr_batches.append(lr_train[start_idx:end_idx])
 
-    epochs = 10
+    epochs = 5
 
     # Enumerate training over epochs
     for e in range(epochs):
@@ -232,14 +232,39 @@ def main():
         print("\nepoch:", e + 1, "g_loss:", g_loss, "d_loss:", d_loss, "\n\n")
 
         if (e + 1) % 1 == 0:  # Change the frequency for model saving, if needed
-            generator.save("gen_e_" + str(e + 1) + ".h5")
+            generator.save("../srgen_upx4_e_" + str(e + 1) + ".h5")
 
     ###################################################################################
     # Test - perform super resolution using saved generator model
     from keras.models import load_model
     from numpy.random import randint
 
-    generator = load_model('gen_e_5.h5', compile=False)
+    generator = load_model('../srgen_upx4_e_1.h5', compile=False)
+
+    [X1, X2] = [lr_test, hr_test]
+    # select random example
+    ix = randint(0, len(X1), 1)
+    src_image, tar_image = X1[ix], X2[ix]
+
+    # generate image from source
+    gen_image = generator.predict(src_image)
+
+    # plot all three images
+
+    plt.figure(figsize=(16, 8))
+    plt.subplot(231)
+    plt.title('LR Image')
+    plt.imshow(src_image[0, :, :, :])
+    plt.subplot(232)
+    plt.title('Superresolution')
+    plt.imshow(gen_image[0, :, :, :])
+    plt.subplot(233)
+    plt.title('Orig. HR image')
+    plt.imshow(tar_image[0, :, :, :])
+
+    plt.show()
+
+    generator = load_model('../srgen_upx4_e_5.h5', compile=False)
 
     [X1, X2] = [lr_test, hr_test]
     # select random example

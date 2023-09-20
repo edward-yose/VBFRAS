@@ -1,8 +1,4 @@
 """
-Original ataset from: http://press.liacs.nl/mirflickr/mirdownload.html
-
-Read high-res. original images and save lower versions to be used for SRGAN.
-
 128x128 that will be  used as HR images
 32x32 that will be used as LR images
 """
@@ -15,9 +11,9 @@ import matplotlib.pyplot as plt
 
 def check_dir(mstr, hr, lr):
     if not os.path.exists(os.path.join(mstr, hr)):
-        os.makedirs(hr)
+        os.makedirs(os.path.join(mstr, hr))
     if not os.path.exists(os.path.join(mstr, lr)):
-        os.makedirs(lr)
+        os.makedirs(os.path.join(mstr, lr))
     print(f'{hr} and {lr} dir has been made')
 
 
@@ -32,7 +28,7 @@ def main(train_dir, hr_image, lr_image):
 
 
 if __name__ == '__main__':
-    TRAIN_DIR = "../../DATASET/LFW_unlabelled"
+    TRAIN_DIR = f"../../../DATASET/img_align_celeba"
     HR_DIR = "hr_images"
     LR_DIR = "lr_images"
     check_dir(TRAIN_DIR, HR_DIR, LR_DIR)

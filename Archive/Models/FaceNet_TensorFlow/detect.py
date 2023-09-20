@@ -1,7 +1,8 @@
+from architecture import *
+
 import cv2
 import numpy as np
 import mtcnn
-from architecture import *
 from train import normalize, l2_normalizer
 from scipy.spatial.distance import cosine
 import pickle

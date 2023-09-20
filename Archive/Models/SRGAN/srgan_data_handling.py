@@ -22,6 +22,6 @@ def main(source_folder, destination_folder):
 
 
 if __name__ == '__main__':
-    SOURCE = '../../DATASET/LFW'
-    DESTINATION = './../DATASET/LFW_unlabelled/data'
+    SOURCE = '../../../DATASET/LFW'
+    DESTINATION = '../../../DATASET/LFW_unlabelled/data'
     main(SOURCE, DESTINATION)

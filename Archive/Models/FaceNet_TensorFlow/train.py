@@ -8,7 +8,7 @@ from keras.models import load_model
 
 from architecture import *
 
-face_data = 'Faces/'
+face_data = './DATASET/Attendee2/'
 required_shape = (160, 160)
 face_encoder = InceptionResNetV1()
 path = "facenet_keras_weights.h5"
