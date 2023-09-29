@@ -1,1 +1,0 @@
-# Either Qt5 or Tkinter will be used

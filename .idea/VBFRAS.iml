@@ -5,8 +5,8 @@
       <excludeFolder url="file://$MODULE_DIR$/DATASET/Attendee" />
       <excludeFolder url="file://$MODULE_DIR$/DATASET/lfw" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/Archive/DATASET" />
       <excludeFolder url="file://$MODULE_DIR$/Archive/TRASHBIN" />
+      <excludeFolder url="file://$MODULE_DIR$/DATASET/DATASET" />
     </content>
     <orderEntry type="jdk" jdkName="VBConda" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
